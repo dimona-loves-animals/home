@@ -1,0 +1,50 @@
+#dla_container {
+  text-align: center;
+}
+
+.logo {
+  background: url("/assets/logo.original.jpg") no-repeat fixed center;
+  background-size: contain;
+  img {
+    opacity: 0;
+  }
+
+  .alt-logo {
+    display: none;
+  }
+}
+
+section {
+  padding: 55px;
+}
+
+#about {
+  background-color: #d3222a;
+  color: white;
+}
+
+#mission {
+  background-color: peachpuff;
+}
+
+#useful {
+}
+
+@import 'heart';
+
+.border-going-down {
+  display: block;
+  width: 100%;
+  height: 55px;
+  fill: white;
+  background-color: peachpuff;
+}
+
+@import 'notes';
+
+@import 'heart-bg';
+
+.hearts-bg {
+  height: 100%;
+  @include hearts(122px, #d3222a, #fc2e5a, #d77);
+}

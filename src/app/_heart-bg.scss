@@ -1,0 +1,33 @@
+@mixin hearts($bg_size, $base_color, $color_1, $color_2) {
+  $dot_size: $bg_size/7.5;
+  background: $base_color;
+  background-image: radial-gradient($color_2 $dot_size*0.5, transparent $dot_size*0.5 + 1px),
+  radial-gradient($color_2 $dot_size*0.5, transparent $dot_size*0.5 + 1px),
+  radial-gradient($color_1 $dot_size, transparent $dot_size + 1px),
+  radial-gradient($color_1 $dot_size, transparent $dot_size + 1px),
+  linear-gradient(
+      135deg,
+      $color_2 6%,
+      $base_color 6.45%,
+      $base_color 44%,
+      transparent 46%,
+      transparent 63%,
+      $base_color 63.25%
+  ),
+  linear-gradient(
+      45deg,
+      transparent 39.75%,
+      $color_1 40.5%,
+      $color_1 60%,
+      transparent 0,
+      transparent 93.25%,
+      $color_2 94%
+  );
+  background-size: $bg_size $bg_size;
+  background-position: $dot_size*3.35 $dot_size*3.5,
+  $dot_size*4.2 $dot_size*3.5,
+  -$dot_size/2 (-$dot_size/2),
+  $dot_size (-$dot_size/2),
+  0 0, 0 0;
+}
+
