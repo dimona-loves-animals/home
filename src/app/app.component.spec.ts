@@ -26,6 +26,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to dla!');
+    expect(compiled.querySelector('h1 .alt-logo').textContent).toContain('דימונה אוהבת חיות');
   }));
 });
