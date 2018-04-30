@@ -6,10 +6,17 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "ng test --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "pre-commit": [
+    "lint"
+  ],
+  "pre-push": [
+    "test",
+    "e2e"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.2.10",
@@ -41,6 +48,8 @@
     "karma-coverage-istanbul-reporter": "^1.4.2",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^1.0.0",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
     "protractor": "~5.3.1",
     "ts-node": "~6.0.2",
     "tslint": "~5.9.1",
