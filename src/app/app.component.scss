@@ -5,7 +5,8 @@
 .logo {
   background: url("/assets/logo.original.jpg") no-repeat fixed center;
   background-size: contain;
-  img {
+  img.logo-image {
+    max-width: 100%;
     opacity: 0;
   }
 
@@ -21,6 +22,7 @@ section {
 #about {
   background-color: #d3222a;
   color: white;
+  font-family: 'Bellefair', serif;
 }
 
 #mission {
