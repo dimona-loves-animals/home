@@ -1,31 +1,44 @@
-FROM node:9.11.1-alpine as angular
+FROM node:8-stretch as angular-built
 
-# Linux setup (from https://github.com/johnpapa/docker-angular-cli/blob/master/Dockerfile)
-RUN apk update \
-  && apk add --update alpine-sdk \
-  && apk del alpine-sdk \
-  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
-  && npm cache verify \
-  && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+ARG NG_CLI_VERSION=7.3.8
+ARG USER_HOME_DIR="/tmp"
+ARG APP_DIR="/app"
+ARG USER_ID=1000
 
-# python needed by lib-sass (needed by @angular/cli).
-RUN apk add yarn python --no-cache
-RUN npm i -g --unsafe-perm @angular/cli@1.7.4
-RUN ng set --global packageManager=yarn
+ENV NPM_CONFIG_LOGLEVEL warn
+ENV HOME "$USER_HOME_DIR"
 
-ENV HOME=/home/node
-RUN mkdir -p $HOME && chown node:node $HOME && chmod -R u+w $HOME
-WORKDIR $HOME
-USER node
+# npm 5 uses different userid when installing packages, as workaround su to node when installing
+# see https://github.com/npm/npm/issues/16766
+RUN set -xe \
+    && curl -sL https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 > /usr/bin/dumb-init \
+    && chmod +x /usr/bin/dumb-init \
+    && mkdir -p $USER_HOME_DIR \
+    && chown $USER_ID $USER_HOME_DIR \
+    && chmod a+rw $USER_HOME_DIR \
+    && chown -R node /usr/local/lib /usr/local/include /usr/local/share /usr/local/bin \
+    && (cd "$USER_HOME_DIR"; su node -c "npm install -g @angular/cli@$NG_CLI_VERSION; npm install -g yarn; chmod +x /usr/local/bin/yarn; npm cache clean --force")
 
+RUN npm i npm@latest -g
+
+WORKDIR $APP_DIR
+EXPOSE 4200
+
+# Use npm
 COPY package.json .
 COPY yarn.lock .
 RUN yarn install
 
 COPY . .
-RUN ng build --prod --build-optimizer
+
+RUN ng build --prod
+
+USER $USER_ID
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 FROM nginx:alpine
-COPY --from=angular /home/node/dist /usr/share/nginx/html
-
+COPY --from=angular-built app/dist /usr/share/nginx/html
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80 443
 CMD [ "nginx", "-g", "daemon off;" ]
