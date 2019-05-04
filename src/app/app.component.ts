@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'dla-root',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dla';
+
+  @ViewChild('about') about: ElementRef;
+
+  scrollToAbout(): void {
+    const targetElement = this.about.nativeElement;
+    targetElement.scrollIntoView({behavior: 'smooth'});
+  }
+
 }
