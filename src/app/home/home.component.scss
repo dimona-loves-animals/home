@@ -1,3 +1,44 @@
+h1 {
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 4em;
+  margin: 40px 0;
+}
+
+h3 {
+  font-size: 3em;
+  margin: 30px 0;
+}
+
+p {
+  font-size: 1.3em;
+  margin: 20px 0;
+}
+
+ul {
+  margin: 25px 0 35px;
+  li {
+    padding: 10px;
+  }
+}
+
+button {
+  font-size: 3em;
+  padding: 55px;
+  border-radius: 55px;
+  font-family: 'Varela Round', sans-serif;
+  background-color: antiquewhite;
+  color: #FC2E5A;
+  border: none;
+}
+
+footer {
+  margin: 40px;
+  color: #888;
+}
+
 // entire page container
 #dla_container {
   text-align: center;

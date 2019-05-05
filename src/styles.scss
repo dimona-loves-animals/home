@@ -1,26 +1,16 @@
-@import 'reset';
-
 html, body {
   padding: 0;
   margin: 0;
   direction: rtl;
+  text-align: right;
   font-family: 'Arimo', sans-serif;
 }
 
-h2 {
-  font-size: 4em;
-  margin: 40px 0;
-}
-
 h3 {
-  font-size: 3em;
-  margin: 30px 0;
   font-family: 'Heebo', sans-serif;
 }
 
 p {
-  font-size: 1.3em;
-  margin: 20px 0;
   font-family: 'Rubik', sans-serif;
 
   &.lead {
@@ -29,13 +19,6 @@ p {
 
   &.mute {
     font-family: 'Suez One', serif;
-  }
-}
-
-ul {
-  margin: 25px 0 35px;
-  li {
-    padding: 10px;
   }
 }
 
@@ -48,13 +31,7 @@ legend {
 }
 
 button {
-  font-size: 3em;
-  padding: 55px;
-  border-radius: 55px;
   font-family: 'Varela Round', sans-serif;
-  background-color: antiquewhite;
-  color: #FC2E5A;
-  border: none;
 }
 
 blockquote {
@@ -63,9 +40,4 @@ blockquote {
 
 pre {
   font-family: 'Frank Ruhl Libre', serif;
-}
-
-footer {
-  margin: 40px;
-  color: #888;
 }
