@@ -1,0 +1,6 @@
+@import 'heart-bg';
+
+.hearts-bg {
+  height: 100%;
+  @include hearts(122px, #d3222a, #fc2e5a, #d77);
+}
