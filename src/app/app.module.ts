@@ -1,24 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { ShimoshonComponent } from './shimoshon/shimoshon.component';
-import { HomeComponent } from './home/home.component';
+import {AppComponent} from './app.component';
+import {ShimoshonComponent} from './features/shimoshon/shimoshon.component';
+import {HomeComponent} from './features/home/home.component';
+import {ComponentsModule} from './components/components.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ShimoshonComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

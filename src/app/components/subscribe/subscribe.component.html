@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="col-md-6 offset-md-3">
+    <div class="text-center">
+
+      <h2>הרשמה לרשימת התפוצה</h2>
+      <p>הירשמו לרשימת התפוצה החדשה שלנו כדי לקבל למייל חדשות ועדכונים על הפעילות</p>
+
+      <form id="subscribe_form" (ngSubmit)="submit()">
+        <fieldset>
+          <div class="form-group">
+            <div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span>
+              <input type="email" id="email" name="email" placeholder="your@email.com" [(ngModel)]="email" style="direction:ltr;" class="form-control input-md" required>
+            </div>
+          </div>
+          <div class="lead result" [innerText]="result"></div>
+          <input type="submit" [disabled]="submitting" value="הירשמו עכשיו!" class="btn btn-large" />
+          <div class="spinner" [hidden]="!submitting"><br/><i class="fas fa-spinner fa-spin fa-2x"></i></div>
+        </fieldset>
+      </form>
+
+    </div>
+
+  </div>
+</div>
