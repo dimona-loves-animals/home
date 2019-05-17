@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'dla-shimoshon',
@@ -6,4 +7,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./shimoshon.component.scss']
 })
 export class ShimoshonComponent {
+  public constructor(private titleService: Title) {
+    this.titleService.setTitle('שימושון | דימונה אוהבת חיות');
+  }
 }

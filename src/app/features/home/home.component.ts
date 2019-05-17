@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'dla-home',
@@ -9,7 +10,8 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('about') about: ElementRef;
 
-  constructor() {
+  public constructor(private titleService: Title) {
+    this.titleService.setTitle('דימונה אוהבת חיות');
   }
 
   ngOnInit() {
