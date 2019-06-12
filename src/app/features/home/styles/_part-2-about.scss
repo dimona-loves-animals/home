@@ -3,6 +3,19 @@
   background-color: #d3222a;
   color: white;
   font-family: 'Bellefair', serif;
+
+  .social-icons {
+    a {
+      color: white;
+
+      &:hover {
+        color: #fc2e5a;
+      }
+    }
+    a + a {
+      margin-right: 15px;
+    }
+  }
 }
 
 @import 'heart';
