@@ -1,0 +1,7 @@
+version: '3.2'
+
+services:
+  home:
+    ports:
+      - "4202:80"
+    command: [nginx-debug, '-g', 'daemon off;']

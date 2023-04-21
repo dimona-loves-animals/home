@@ -5,3 +5,8 @@ services:
     build: .
     environment:
       NODE_ENV: production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dla.rule=Host(`dimonalovesanimals.org`)"
+      - "traefik.http.routers.dla.entrypoints=websecure"
+      - "traefik.http.routers.dla.tls.certresolver=myresolver"
