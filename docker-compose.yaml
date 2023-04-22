@@ -2,6 +2,7 @@ version: '3.2'
 
 services:
   home:
+    restart: unless-stopped
     build: .
     environment:
       NODE_ENV: production
