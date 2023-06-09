@@ -28,11 +28,11 @@ export class SubscribeComponent implements OnInit {
     const body = new HttpParams()
       .set('email', this.email);
 
-    this.httpClient.post('http://help.dimonalovesanimals.org/subscribe', body).subscribe(res => {
+    this.httpClient.post('https://help.dimonalovesanimals.org/subscribe', body).subscribe(res => {
       this.result = SubscribeComponent.success_result;
       this.submitting = false;
     }, (err) => {
-      if (err.url === 'http://help.dimonalovesanimals.org/') {
+      if (err.url === 'https://help.dimonalovesanimals.org/') {
         // old /subscribe will redirect to /,
         // which will trigger an error.
         // this is a workaround.
