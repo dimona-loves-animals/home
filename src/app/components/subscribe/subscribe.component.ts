@@ -26,9 +26,9 @@ export class SubscribeComponent implements OnInit {
     this.result = '';
 
     const body = new HttpParams()
-      .set('email', this.email);
+      .set('email_address', this.email);
 
-    this.httpClient.post('https://help.dimonalovesanimals.org/subscribe', body).subscribe(res => {
+    this.httpClient.post('https://api.dimonalovesanimals.org/subscribe', body).subscribe(res => {
       this.result = SubscribeComponent.success_result;
       this.submitting = false;
     }, (err) => {
